@@ -1,0 +1,13 @@
+#home-page {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  background:white;
+
+  .home-page-content {
+    max-width:1200px;
+    width:100%;
+  }
+}
