@@ -1,37 +1,42 @@
 import Crunchyroll from "../utils/crunchyroll";
 import {io} from 'socket.io-client';
 import {EventsMap} from "./Consumer";
-import {makeObservable, observable} from "mobx";
+import {makeObservable, observable, action} from "mobx";
 
 class AppStoreSingleton {
 
     websocketMessageList = [];
+    currentRoomId = null;
 
     constructor() {
         makeObservable(this, {
-            websocketMessageList:observable,
+            websocketMessageList: observable,
+            currentRoomId: observable,
         })
     }
 
-    init(){
+    init() {
         this.crunchyroll = new Crunchyroll();
 
-        let websocketURL = process.env.NODE_ENV === 'development' ? "http://localhost:8000" : "http://localhost:8000"
-        this.websocket = io(websocketURL, {query: `roomId=test_room`});
-        this.websocket.on('connect', ()=> console.log(`Connected to websocket at ${websocketURL}`));
+        let websocketURL = process.env.NODE_ENV === 'development' ? "http://localhost:8000" : "http://localhost:8000";
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomId = urlParams.get('roomId');
+        let opts = {};
+        if (roomId) opts.query = `roomId=${roomId}`
+        this.websocket = io(websocketURL, opts);
+        this.websocket.on('connect', () => console.log(`Connected to websocket at ${websocketURL}`));
 
         // Register all of the events and their corresponding consumers.
         Object.keys(EventsMap).forEach(event => {
-            this.websocket.on(event, (message) => {
+            this.websocket.on(event, action((message) => {
                 this.websocketMessageList.push(message);
                 EventsMap[event](message);
-            })
+            }))
         });
 
     }
 
 }
-
 
 
 const AppStore = new AppStoreSingleton();

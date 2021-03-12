@@ -5,6 +5,7 @@ let wsRouter = {
     'play_video': WsActions.onPlayVideo,
     'guest_joins': WsActions.onGuestJoinsRoom,
     'on_seek': WsActions.onSeek,
+    'on_new_video':WsActions.onNewVideo,
 }
 
 module.exports = wsRouter;

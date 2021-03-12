@@ -20,9 +20,9 @@ function AnimeCard({media, onClick}){
                 <Typography.Paragraph className='episode-name' ellipsis={{rows:1}}>
                     Episode {episode_number}
                 </Typography.Paragraph>
-                <Typography.Paragraph className='episode-name' ellipsis={{rows:1}}>
-                    {episode_name}
-                </Typography.Paragraph>
+                {/*<Typography.Paragraph className='episode-name' ellipsis={{rows:1}}>*/}
+                {/*    {episode_name}*/}
+                {/*</Typography.Paragraph>*/}
             </div>
         </div>
     )

@@ -19,6 +19,10 @@ class WsActions {
     static onSeek = (data, roomId, socket, websocketServer) => {
         socket.to(roomId).emit(data.event, data);
     }
+
+     static onNewVideo = (data, roomId, socket, websocketServer) => {
+        socket.to(roomId).emit(data.event, data);
+    }
 }
 
 module.exports = WsActions;

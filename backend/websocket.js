@@ -24,6 +24,9 @@ class WebSocketClass {
                 if(func) func(json, roomId, socket, this.websocketServer)
             });
         })
+
+        socket.emit('on_enter_room', {roomId})
+
     }
 }
 

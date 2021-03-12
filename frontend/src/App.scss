@@ -3,6 +3,7 @@
 .app {
   text-align: center;
   height: 100vh;
+  font-family: Inter, sans-serif;
 }
 
 .app-header {
@@ -13,4 +14,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+
+.ant-input {
+  border-radius: 5px;
+
+  &-disabled {
+    //background:#d4d4d4 !important;
+  }
 }
