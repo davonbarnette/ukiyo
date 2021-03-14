@@ -17,7 +17,7 @@ function AnimeList(props){
 
     return (
         <div className='anime-list'>
-            <List grid={{gutter:16, xs: 2, sm: 3, md:3, lg:4, xl:4, xxl:4}} dataSource={collectionList} renderItem={renderAnimeListItem}/>
+            <List grid={{gutter:24, xs: 2, sm: 3, md:3, lg:4, xl:4, xxl:4}} dataSource={collectionList} renderItem={renderAnimeListItem}/>
         </div>
     )
 }

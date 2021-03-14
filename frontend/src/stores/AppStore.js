@@ -21,8 +21,10 @@ class AppStoreSingleton {
         let websocketURL = process.env.NODE_ENV === 'development' ? "http://localhost:8000" : "http://localhost:8000";
         const urlParams = new URLSearchParams(window.location.search);
         const roomId = urlParams.get('roomId');
+        const lsRoomId = localStorage.getItem('roomId');
         let opts = {};
         if (roomId) opts.query = `roomId=${roomId}`
+        else if (lsRoomId) opts.query = `roomId=${lsRoomId}`;
         this.websocket = io(websocketURL, opts);
         this.websocket.on('connect', () => console.log(`Connected to websocket at ${websocketURL}`));
 

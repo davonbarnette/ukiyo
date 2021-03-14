@@ -2,7 +2,7 @@ import './styles.scss';
 import {Typography} from "antd";
 
 function AnimeCard({media, onClick}){
-    const { screenshot_image, name:episode_name, collection_name, episode_number } = media;
+    const { screenshot_image, collection_name, episode_number } = media;
 
     function onAnimeClick(){
         if (onClick) onClick(media)
@@ -20,9 +20,6 @@ function AnimeCard({media, onClick}){
                 <Typography.Paragraph className='episode-name' ellipsis={{rows:1}}>
                     Episode {episode_number}
                 </Typography.Paragraph>
-                {/*<Typography.Paragraph className='episode-name' ellipsis={{rows:1}}>*/}
-                {/*    {episode_name}*/}
-                {/*</Typography.Paragraph>*/}
             </div>
         </div>
     )

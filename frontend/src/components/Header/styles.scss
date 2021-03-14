@@ -1,0 +1,73 @@
+.app-header {
+  display: flex;
+  padding: 0 48px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+
+  &-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    overflow: hidden;
+
+    &-left {
+      position: relative;
+      color: black;
+      padding: 18px 0;
+
+      .logo {
+        position: absolute;
+        width: 74px;
+        left: 0;
+        top: 0;
+        transform: translate(0, -10%);
+      }
+
+      .title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 90px;
+        position: relative;
+
+        .hiragana {
+          font-size: 42px;
+          line-height: 1em;
+          background-color: #0093E9;
+          background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+          position: relative;
+          z-index: 100;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .english {
+          font-size: 150px;
+          transform: translate(-15%, 0);
+          z-index: 0;
+          opacity: 0.03;
+          font-weight: 600;
+          letter-spacing: 0.05em;
+          white-space: nowrap;
+          position: absolute;
+          color: #1f1f29;
+          margin-left: 9px;
+          user-select: none;
+        }
+      }
+    }
+
+    &-right {
+
+    }
+  }
+
+}

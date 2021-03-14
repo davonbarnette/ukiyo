@@ -1,0 +1,149 @@
+.anime-watch {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-content {
+    padding: 0 48px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .actions-bar {
+      margin-top: 36px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+      max-width: 1200px;
+      box-shadow:0 1px 2px rgba(128, 138, 157, 0.08), 0 8px 32px rgba(128, 138, 157, 0.18);
+      background:white;
+      padding: 24px 36px;
+      border-radius:10px;
+
+      &-header {
+        font-weight: 600;
+        width: 100%;
+        font-size: 18px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom:18px;
+
+        &-sub {
+          color:gray;
+          font-size:14px;
+
+        }
+      }
+
+      .room-id {
+        color: #a9a9a9;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 6px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        .copy-link {
+          margin-left: 12px;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          background: #3861FB;
+          padding: 6px 12px;
+          border-radius: 10px;
+          color: white;
+          font-weight: 600;
+          transition: all 0.2s;
+          margin-right: auto;
+          font-size: 14px;
+
+          &.copied {
+            background: #16c784;
+          }
+
+          &:not(.copied):hover {
+            cursor: pointer;
+            background: #2f4cbe;
+          }
+        }
+      }
+    }
+
+    .media {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      max-width: 1200px;
+      width: 100%;
+
+      text-align: left;
+
+      .anime-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 6px;
+
+      }
+
+      .collection-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 600;
+
+        .collection-name {
+
+        }
+
+        .episode-number {
+          padding: 6px 12px;
+          background: #596477;
+          border-radius: 10px;
+          color: white;
+          font-size: 12px;
+        }
+
+        .episode-name {
+          margin-left: 12px;
+          color: #808A9d;
+        }
+      }
+
+      .description {
+        color: #58667e;
+        text-align: left;
+        margin-top: 12px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .video-section {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: black;
+
+    .video-player-override {
+      flex: 0 1 1200px;
+      --vm-player-border-radius: 0;
+      --vm-player-theme: #e86c8b;
+
+      .scrim {
+        opacity: 0 !important;
+      }
+    }
+  }
+}

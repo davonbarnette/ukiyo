@@ -2,12 +2,20 @@
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  padding: 24px;
-  background:white;
+  align-items: center;
+  padding: 48px;
+  background:#f0f2f5;
 
   .home-page-content {
     max-width:1200px;
     width:100%;
+
+    &-subheader {
+      font-size:24px;
+      text-align: left;
+      margin-bottom:18px;
+      font-weight: 700;
+    }
+
   }
 }

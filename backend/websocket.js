@@ -9,23 +9,34 @@ class WebSocketClass {
     }
 
     onConnect = (socket) => {
-        let roomId = socket.handshake.query['roomId'];
-        if (!roomId) roomId = uuid();
-        socket.join(roomId)
-        console.log('Socket connected and given room: ', roomId);
+        let curRoomId = socket.handshake.query['roomId'];
+        if (curRoomId === 'null') curRoomId = null;
+        let newRoomId = uuid();
+        if (curRoomId){
+            socket.join(curRoomId)
+        } else {
+            socket.join(newRoomId);
+        }
+
+        console.log('Socket connected and given room: ', curRoomId || newRoomId);
 
         Object.keys(WsRouter).forEach(event => {
-
             socket.on(event, (message) => {
                 let json = JSON.parse(message);
                 console.log('Received event ', event, 'with message: ', json);
 
                 let func = WsRouter[event]
-                if(func) func(json, roomId, socket, this.websocketServer)
+                if(func) func(json, curRoomId || newRoomId, socket, this.websocketServer)
             });
         })
 
-        socket.emit('on_enter_room', {roomId})
+        let enterRoomData = { roomId: curRoomId };
+        if (!curRoomId){
+            enterRoomData.roomId = newRoomId;
+            enterRoomData.asNew = true;
+        }
+
+        socket.emit('on_enter_room', enterRoomData)
 
     }
 }

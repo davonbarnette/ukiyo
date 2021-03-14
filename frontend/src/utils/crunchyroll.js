@@ -124,7 +124,7 @@ export default class Crunchyroll {
         let params = {
             session_id, version, connectivity_type, collection_id, include_clips:1,
             limit:5000, offset:0,
-            fields:'media.media_id,media.available,media.available_time,media.collection_id,media.collection_name,media.series_id,media.type,media.episode_number,media.name,media.description,media.screenshot_image,media.created,media.duration,media.playhead,media.bif_url'
+            fields:'media.most_recent_media.language,media.media_id,media.available,media.available_time,media.collection_id,media.collection_name,media.series_id,media.type,media.episode_number,media.name,media.description,media.screenshot_image,media.created,media.duration,media.playhead,media.bif_url'
         }
         try{
             let res = await axios.get(getCrunchyRollApiUrl(CRUNCHYROLL_API_URLS.LIST_MEDIA), {params});
@@ -143,6 +143,22 @@ export default class Crunchyroll {
         }
         try{
             let res = await axios.get(getCrunchyRollApiUrl(CRUNCHYROLL_API_URLS.LIST_SERIES), {params});
+            return res.data.data;
+        } catch (e) {
+            console.error('Could not get series', e.message);
+            return undefined;
+        }
+    }
+
+    async getRecentlyWatched(){
+        const {session_id, version, connectivity_type, locale} = this;
+        let params = {
+            session_id, version, connectivity_type, fields: "media.media_id,media.available,media.available_time,media.collection_id,media.collection_name,media.series_id,media.type,media.episode_number,media.name,media.description,media.screenshot_image,media.created,media.duration,media.playhead,media.bif_url,series.series_id,series.name,series.portrait_image,series.landscape_image,series.description,series.in_queue",
+            locale:locale(),
+            media_type:'anime', limit:12, offset:0
+        }
+        try{
+            let res = await axios.get(getCrunchyRollApiUrl(CRUNCHYROLL_API_URLS.RECENTLY_WATCHED), {params});
             return res.data.data;
         } catch (e) {
             console.error('Could not get series', e.message);
@@ -170,5 +186,6 @@ const CRUNCHYROLL_API_URLS = {
     AUTOCOMPLETE: 'autocomplete',
     LIST_SERIES:'list_series',
     ANIME_INFO:'info',
-    LIST_MEDIA:'list_media'
+    LIST_MEDIA:'list_media',
+    RECENTLY_WATCHED:'recently_watched',
 }

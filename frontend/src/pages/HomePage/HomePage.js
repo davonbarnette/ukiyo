@@ -6,11 +6,17 @@ import {useState, useEffect} from "react";
 import RouteHandler from "../../routes/RouteHandler";
 
 function HomePage(){
-    const [animes, setAnimes] = useState();
+    const [loadingAnime, setLoadingAnime] = useState();
+    const [recentlyUpdatedAnime, setRecentlyUpdatedAnime] = useState();
+    const [recentlyWatchedAnime, setRecentlyWatchedAnime] = useState();
 
-    async function setAnimeFromAPI(){
+    async function getAndSetRecentlyUpdatedAnime(){
         let anime = await AppStore.crunchyroll.getSeries();
-        if (anime) setAnimes(anime.map(single => single.most_recent_media));
+        if (anime) setRecentlyUpdatedAnime(anime.map(single => single.most_recent_media));
+    }
+    async function getAndSetRecentlyWatchedAnime(){
+        let anime = await AppStore.crunchyroll.getRecentlyWatched();
+        if (anime) setRecentlyWatchedAnime(anime.map(single => single.media));
     }
 
     function onAnimeClick(media){
@@ -18,14 +24,30 @@ function HomePage(){
         RouteHandler.redirect(RouteHandler.watchById(series_id,media_id));
     }
 
+    async function loadAllAnime(){
+        setLoadingAnime(true);
+        await getAndSetRecentlyUpdatedAnime();
+        await getAndSetRecentlyWatchedAnime();
+        setLoadingAnime(false);
+    }
+
     useEffect(()=>{
-        setAnimeFromAPI();
+        loadAllAnime();
     }, [])
+
+    if (loadingAnime) return 'Loading anime...'
 
     return (
         <div id='home-page'>
             <div className='home-page-content'>
-                <AnimeList collectionList={animes} onAnimeClick={onAnimeClick}/>
+                <div className='home-page-content-subheader'>
+                    Recently Watched
+                </div>
+                <AnimeList collectionList={recentlyWatchedAnime} onAnimeClick={onAnimeClick}/>
+                <div className='home-page-content-subheader' style={{marginTop: 48}}>
+                    Newly Updated Episodes
+                </div>
+                <AnimeList collectionList={recentlyUpdatedAnime} onAnimeClick={onAnimeClick}/>
             </div>
         </div>
     )

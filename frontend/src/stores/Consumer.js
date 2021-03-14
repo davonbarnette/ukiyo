@@ -28,6 +28,9 @@ export class WebsocketConsumerActions {
     static onEnterRoom(data){
         console.log('Entered room with ID: ', data.roomId);
         AppStore.currentRoomId = data.roomId;
+        if (data.asNew){
+            localStorage.setItem('roomId', data.roomId);
+        }
     }
 }
 

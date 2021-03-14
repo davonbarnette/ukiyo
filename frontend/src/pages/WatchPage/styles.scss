@@ -6,160 +6,44 @@
   width: 100%;
   background: #f0f2f5;
 
-  .actions-bar {
-    margin-top: 36px;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 100%;
-    max-width: 900px;
-    padding: 0 24px;
 
-    &-header {
-      font-weight: 600;
-      width: 100%;
-      font-size: 18px;
-      text-align: left;
-      margin-bottom: 6px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .room-id {
-      color: #a9a9a9;
-      font-size: 13px;
-      font-weight: 600;
-      margin-top:6px;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-
-      .copy-link {
-        margin-left: 12px;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
-        background: #3861FB;
-        padding: 6px 12px;
-        border-radius: 10px;
-        color: white;
-        font-weight: 600;
-        transition: all 0.2s;
-        margin-right: auto;
-        font-size: 14px;
-
-        &.copied {
-          background: #16c784;
-        }
-
-        &:not(.copied):hover {
-          cursor: pointer;
-          background: #2f4cbe;
-        }
-      }
-    }
-  }
-
-  .media {
-    margin-top: 36px;
+  .content-collection {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 900px;
-    width: 100%;
-    padding: 0 24px;
-    text-align: left;
+    align-items: center;
+    padding: 0 48px;
+    width:100%;
 
-    .anime-title {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 6px;
-
-    }
-
-    .collection-info {
+    .collection {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
-      font-weight: 600;
-
-      .collection-name {
-
-      }
-
-      .episode-number {
-        padding: 6px 12px;
-        background: #808A9D;
-        border-radius: 10px;
-        color: white;
-        font-size: 12px;
-      }
-
-      .episode-name {
-        margin-left: 12px;
-        color: #808A9d;
-      }
-    }
-
-    .description {
-      color: #58667e;
-      text-align: left;
-      margin-top: 12px;
-      font-weight: 600;
-    }
-  }
-
-  .video-section {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background: black;
-
-    .video-player-override {
-      flex: 0 1 852px;
-      --vm-player-border-radius: 0;
-      --vm-player-theme: #e86c8b;
-
-      .scrim {
-        opacity: 0 !important;
-      }
-    }
-  }
-
-  .collection {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 900px;
-    width: 100%;
-    margin-top: 48px;
-    padding: 0 24px;
-
-    &-header {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 18px;
-      font-size: 18px;
-      font-weight: 600;
+      align-items: flex-start;
+      max-width: 1200px;
       width: 100%;
-      text-align: left;
+      margin-top: 48px;
 
-      &:after {
-        content: "";
-        margin-top: 6px;
-        height: 1px;
+
+      &-header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 18px;
+        font-size: 18px;
+        font-weight: 600;
         width: 100%;
-        background: #c3c3c3;
-      }
-    }
+        text-align: left;
 
+        &:after {
+          content: "";
+          margin-top: 6px;
+          height: 1px;
+          width: 100%;
+          background: #c3c3c3;
+        }
+      }
+
+    }
   }
 
 
