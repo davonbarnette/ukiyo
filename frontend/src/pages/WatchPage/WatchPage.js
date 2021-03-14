@@ -82,7 +82,7 @@ function WatchPage(props) {
         AppActions.sendWebsocketMessage(EVENTS.PLAY_VIDEO, {event: EVENTS.PLAY_VIDEO})
     }
 
-    function onPause(...args) {
+    function onPause(event) {
         AppActions.sendWebsocketMessage(EVENTS.PAUSE_VIDEO, {event: EVENTS.PAUSE_VIDEO})
     }
 
